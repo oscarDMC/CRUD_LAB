@@ -31,8 +31,7 @@ public interface CursoFacadeLocal {
     List<Curso> findRange(int[] range);
 
     int count();
-  
-    
+      
 } 
     
     

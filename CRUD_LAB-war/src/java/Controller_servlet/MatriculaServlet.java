@@ -5,10 +5,7 @@
  */
 package Controller_servlet;
 
-
-import CRUD_LAB.entity.Estudiantes;
-import CRUD_LAB.session.EstudiantesFacadeLocal;
-import java.io.IOException;
+    import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -16,18 +13,32 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import CRUD_LAB.entity.Matricula;
+import CRUD_LAB.session.MatriculaFacadeLocal;
 
 /**
  *
- * @author gilberto-pedraza
+ * @author ddav_
  */
-@WebServlet(name = "StudentServlet", urlPatterns = {"/StudentServlet"})
-public class StudentServlet extends HttpServlet {
 
-    @EJB
-    private EstudiantesFacadeLocal estudiantesFacade;
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+
+
+
+@WebServlet(name = "MatriculaServlet", urlPatterns = {"/MatriculaServlet"})
+public class MatriculaServlet extends HttpServlet {
     
+    @EJB
+    private MatriculaFacadeLocal matriculaFacade;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -39,42 +50,29 @@ public class StudentServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String codestudiantesStr = request.getParameter("codEstudiantes");
-         int codEstudiantes=Integer.parseInt(codestudiantesStr);
-        //int studentId=0;
-        if(codestudiantesStr!=null && !codestudiantesStr.equals("")){
-            codEstudiantes=Integer.parseInt(codestudiantesStr);
-        } 
-        
-        String nombreEstudiante=request.getParameter("nombreEstudiante");
-        String apellidoEstudiante=request.getParameter("apellidoEstudiante");
-        
-        String yearStr =request.getParameter("semestreEstudiante");
-        int semestreEstudiante=Integer.parseInt(yearStr);
-        
+        int curso = Integer.parseInt(request.getParameter("curso"));
+        int estudiante = Integer.parseInt(request.getParameter("estudiante"));
+        int nota = Integer.parseInt(request.getParameter("nota"));
+        Matricula matri = new Matricula(curso, estudiante, nota);
         
         String action = request.getParameter("action");
         
-        Estudiantes student = new Estudiantes(codEstudiantes,nombreEstudiante,apellidoEstudiante,semestreEstudiante);
-        
-        if("Add".equalsIgnoreCase(action)){
-            estudiantesFacade.create(student);
-        }else if("Edit".equalsIgnoreCase(action)){
-            estudiantesFacade.edit(student);
-        }else if("Delete".equalsIgnoreCase(action)){
-            estudiantesFacade.remove(student);
-        }else if("Search".equalsIgnoreCase(action)){
-            student = estudiantesFacade.find(codEstudiantes);
- 
+        if (action.equals("Add")) {
+            matriculaFacade.create(matri);
+        }else if (action.equals("Edit")) {
+            matriculaFacade.edit(matri);
+        }else if (action.equals("Delete")) {
+            matriculaFacade.remove(matri);
+        }else if (action.equals ("Search")) {
+            matri = matriculaFacade.find(curso);
         }
-        
         response.setContentType("text/html;charset=UTF-8");
-
-        request.setAttribute("student", student);
-        request.setAttribute("allStudents", estudiantesFacade.findAll());
-        request.getRequestDispatcher("studentInfo.jsp").forward (request,response);
+     
+        request.setAttribute("matri", matri);
+        request.setAttribute("allMatriculas", matriculaFacade.findAll());
+        request.getRequestDispatcher("matriculaInfo.jsp").forward(request, response);
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -115,3 +113,4 @@ public class StudentServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+

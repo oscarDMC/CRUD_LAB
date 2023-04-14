@@ -41,9 +41,8 @@ public class Curso implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 10)
     @Column(name = "COD_CURSO")
-    private String codCurso;
+    private Integer codCurso;
     @Size(max = 20)
     @Column(name = "NOMBRE_CURSO")
     private String nombreCurso;
@@ -59,11 +58,11 @@ public class Curso implements Serializable {
     public Curso() {
     }
 
-    public Curso(String codCurso) {
+    public Curso(Integer codCurso) {
         this.codCurso = codCurso;
     }
 
-    public Curso(String codCurso, String nombreCurso, Integer numCreditosCurso, Integer semestreCurso, Integer numEstudAdmitidosCurso) {
+    public Curso(Integer codCurso, String nombreCurso, Integer numCreditosCurso, Integer semestreCurso, Integer numEstudAdmitidosCurso) {
         this.codCurso = codCurso;
         this.nombreCurso = nombreCurso;
         this.numCreditosCurso = numCreditosCurso;
@@ -73,11 +72,11 @@ public class Curso implements Serializable {
 
     
 
-    public String getCodCurso() {
+    public Integer getCodCurso() {
         return codCurso;
     }
 
-    public void setCodCurso(String codCurso) {
+    public void setCodCurso(Integer codCurso) {
         this.codCurso = codCurso;
     }
 

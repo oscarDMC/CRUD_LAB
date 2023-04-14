@@ -5,6 +5,7 @@
  */
 package CRUD_LAB.session;
 
+import CRUD_LAB.entity.Estudiantes;
 import CRUD_LAB.entity.Matricula;
 import java.util.List;
 import javax.ejb.Local;

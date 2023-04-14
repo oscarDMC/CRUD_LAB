@@ -38,6 +38,10 @@ public class MatriculaPK implements Serializable {
         this.codigoEstudiantes = codigoEstudiantes;
     }
 
+    MatriculaPK(int codigoCurso, int codigoEstudiante) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public String getCodigoCurso() {
         return codigoCurso;
     }

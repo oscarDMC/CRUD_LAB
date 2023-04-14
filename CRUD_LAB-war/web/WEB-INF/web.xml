@@ -8,6 +8,10 @@
         <servlet-name>CouseServlet</servlet-name>
         <servlet-class>Controller_servlet.CouseServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MatriculaServlet</servlet-name>
+        <servlet-class>Controller_servlet.MatriculaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>StudentServlet</servlet-name>
         <url-pattern>/StudentServlet</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>CouseServlet</servlet-name>
         <url-pattern>/CouseServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MatriculaServlet</servlet-name>
+        <url-pattern>/MatriculaServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

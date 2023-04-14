@@ -38,11 +38,11 @@ public class CourseServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String codCurso = request.getParameter("codCurso");
-
-        int courseId=0;
-        if(codCurso!=null && !codCurso.equals("")){
-            courseId=Integer.parseInt(codCurso);
+        String codCursoStr = request.getParameter("codCurso");
+        int codCurso=Integer.parseInt(codCursoStr);
+        //int courseId=0;
+        if(codCursoStr!=null && !codCursoStr.equals("")){
+            codCurso=Integer.parseInt(codCursoStr);
         } 
         
         String nombreCurso = request.getParameter("nombreCurso");

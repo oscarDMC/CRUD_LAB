@@ -45,6 +45,11 @@ public class Matricula implements Serializable {
     public Matricula() {
     }
 
+    public Matricula(int codigoCurso, int codigoEstudiante, int matPrecio) {
+        this.matriculaPK = new MatriculaPK(codigoCurso, codigoEstudiante);
+        this.matPrecio = matPrecio;
+    }
+    
     public Matricula(MatriculaPK matriculaPK) {
         this.matriculaPK = matriculaPK;
     }

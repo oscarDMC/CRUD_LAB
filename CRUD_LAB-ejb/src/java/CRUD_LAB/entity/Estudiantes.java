@@ -41,9 +41,8 @@ public class Estudiantes implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 10)
     @Column(name = "COD_ESTUDIANTES")
-    private String codEstudiantes;
+    private Integer codEstudiantes;
     @Size(max = 50)
     @Column(name = "NOMBRE_ESTUDIANTE")
     private String nombreEstudiante;
@@ -58,23 +57,23 @@ public class Estudiantes implements Serializable {
     public Estudiantes() {
     }
 
-    public Estudiantes(String codEstudiantes, String nombreEstudiante, String apellidoEstudiante, Integer semestreEstudiante) {
+    public Estudiantes(Integer codEstudiantes, String nombreEstudiante, String apellidoEstudiante, Integer semestreEstudiante) {
         this.codEstudiantes = codEstudiantes;
         this.nombreEstudiante = nombreEstudiante;
         this.apellidoEstudiante = apellidoEstudiante;
         this.semestreEstudiante = semestreEstudiante;
     }
 
-    public Estudiantes(String codEstudiantes) {
+    public Estudiantes(Integer codEstudiantes) {
         this.codEstudiantes = codEstudiantes;
     }
 
  
-    public String getCodEstudiantes() {
+    public Integer getCodEstudiantes() {
         return codEstudiantes;
     }
 
-    public void setCodEstudiantes(String codEstudiantes) {
+    public void setCodEstudiantes(Integer codEstudiantes) {
         this.codEstudiantes = codEstudiantes;
     }
 
